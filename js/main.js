@@ -500,7 +500,7 @@
 
     // === NAVIGATION ===
     function initNavigation() {
-        document.querySelectorAll('.nav-link').forEach(function(link) {
+        document.querySelectorAll('.nav-link[data-category]').forEach(function(link) {
             link.addEventListener('click', function(e) {
                 e.preventDefault();
                 document.querySelectorAll('.nav-link').forEach(function(l) { l.classList.remove('active'); });
