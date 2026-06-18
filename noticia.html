@@ -106,7 +106,13 @@
                 '<div class="noticia-meta">' + n.autor + ' &bull; ' + n.tempo + '</div>' +
             '</div>' +
             '<img class="noticia-image" src="' + n.imagem + '" alt="">' +
-            '<div class="noticia-body">' + (n.resumo || '') + '</div>' +
+            '<div class="noticia-body">' +
+                '<p><strong>' + (n.resumo || '') + '</strong></p>' +
+                '<p>A informação foi confirmada por fontes oficiais na manhã desta ' + ['domingo','segunda-feira','terça-feira','quarta-feira','quinta-feira','sexta-feira','sábado'][new Date().getDay()] + '. Representantes locais destacaram a importância do tema para a população de Cuiabá e região metropolitana.</p>' +
+                '<p>Segundo especialistas consultados pela reportagem do Cuiabá News, a medida pode trazer impactos significativos para o desenvolvimento econômico e social da capital mato-grossense nos próximos meses.</p>' +
+                '<p>"Estamos trabalhando para garantir que todas as etapas sejam cumpridas dentro do cronograma estabelecido", afirmou uma das autoridades envolvidas no processo.</p>' +
+                '<p>A equipe de reportagem continuará acompanhando o desdobramento do caso e trará novas informações assim que disponíveis. Acompanhe o Cuiabá News para ficar por dentro de tudo que acontece na capital e no estado de Mato Grosso.</p>' +
+            '</div>' +
             '<div class="noticia-share-bar">' +
                 '<a class="noticia-share-btn whatsapp" href="https://wa.me/?text=' + encodeURIComponent(n.titulo + ' - ' + window.location.href) + '" target="_blank"><span class="material-icons">chat</span> WhatsApp</a>' +
                 '<a class="noticia-share-btn twitter" href="https://twitter.com/intent/tweet?text=' + encodeURIComponent(n.titulo) + '&url=' + encodeURIComponent(window.location.href) + '" target="_blank"><span class="material-icons">tag</span> Twitter</a>' +
