@@ -16,7 +16,7 @@
 
     // === GLOBALS ===
     var currentPage = 1;
-    var itemsPerPage = 9999;
+    var itemsPerPage = 20;
     var currentCategory = 'todas';
     var currentTab = 'recentes';
     var allNews = typeof noticias !== 'undefined' ? noticias : [];
