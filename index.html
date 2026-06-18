@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CUIABÁ NEWS — Notícias de Cuiabá e Mato Grosso</title>
+    <meta name="description" content="CUIABÁ NEWS - Portal de notícias de Cuiabá e Mato Grosso. Política, economia, esportes, cidade e mais.">
+    <meta name="keywords" content="Cuiabá, Mato Grosso, notícias, MT, Pantanal, Arena Pantanal">
+    <meta property="og:title" content="CUIABÁ NEWS — Notícias de Cuiabá e Mato Grosso">
+    <meta property="og:description" content="Portal de notícias atualizado de Cuiabá e região metropolitana.">
+    <meta property="og:type" content="website">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <!-- LOADING SCREEN -->
+    <div id="loading-screen" class="loading-screen">
+        <div class="loading-content">
+            <div class="loading-logo">CUIABÁ<span>NEWS</span></div>
+            <div class="loading-bar"><div class="loading-progress"></div></div>
+            <p class="loading-text">Carregando notícias...</p>
+        </div>
+    </div>
+
+    <!-- HEADER -->
+    <header class="header">
+        <div class="header-top">
+            <div class="container">
+                <div class="header-top-left">
+                    <span class="material-icons">schedule</span>
+                    <span id="header-date" class="header-date"></span>
+                    <span class="header-divider">|</span>
+                    <span id="header-clock" class="header-clock"></span>
+                </div>
+                <div class="header-top-right">
+                    <button id="btn-dark-mode" class="btn-icon" title="Modo escuro">
+                        <span class="material-icons">dark_mode</span>
+                    </button>
+                    <button id="btn-search" class="btn-icon" title="Buscar">
+                        <span class="material-icons">search</span>
+                    </button>
+                    <button id="btn-notifications" class="btn-icon" title="Notificações">
+                        <span class="material-icons">notifications</span>
+                        <span class="notification-badge" id="notification-badge">0</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="header-brand">
+            <div class="container">
+                <a href="/" class="logo">
+                    <span class="logo-cuiaba">CUIABÁ</span><span class="logo-news">NEWS</span>
+                </a>
+                <p class="logo-tagline">Notícias de Cuiabá e Mato Grosso</p>
+            </div>
+        </div>
+    </header>
+
+    <!-- NAVIGATION -->
+    <nav class="nav-main" id="nav-main">
+        <div class="container">
+            <div class="nav-scroll">
+                <a href="#" class="nav-link active" data-category="todas">
+                    <span class="material-icons">home</span> Início
+                </a>
+                <a href="#" class="nav-link" data-category="politica">
+                    <span class="material-icons">account_balance</span> Política
+                </a>
+                <a href="#" class="nav-link" data-category="economia">
+                    <span class="material-icons">trending_up</span> Economia
+                </a>
+                <a href="#" class="nav-link" data-category="cidade">
+                    <span class="material-icons">location_city</span> Cidade
+                </a>
+                <a href="#" class="nav-link" data-category="esportes">
+                    <span class="material-icons">sports_soccer</span> Esportes
+                </a>
+                <a href="#" class="nav-link" data-category="brasil">
+                    <span class="material-icons">flag</span> Brasil
+                </a>
+                <a href="#" class="nav-link" data-category="internacional">
+                    <span class="material-icons">public</span> Mundo
+                </a>
+                <a href="#" class="nav-link" data-category="eventos">
+                    <span class="material-icons">event</span> Eventos
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- READING PROGRESS -->
+    <div class="reading-progress" id="reading-progress"></div>
+
+    <!-- TICKER / BREAKING NEWS -->
+    <section class="ticker-bar" id="ticker-bar">
+        <div class="container">
+            <span class="ticker-label">URGENTE</span>
+            <div class="ticker-wrap">
+                <div class="ticker-content" id="ticker-content"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SEARCH OVERLAY -->
+    <div class="search-overlay" id="search-overlay">
+        <div class="search-overlay-inner">
+            <button class="search-close" id="search-close">
+                <span class="material-icons">close</span>
+            </button>
+            <div class="search-box">
+                <span class="material-icons">search</span>
+                <input type="text" id="search-input" placeholder="Buscar notícias..." autocomplete="off">
+            </div>
+            <div class="search-results" id="search-results"></div>
+        </div>
+    </div>
+
+    <!-- NOTIFICATIONS DROPDOWN -->
+    <div class="notifications-dropdown" id="notifications-dropdown">
+        <div class="notifications-header">
+            <h3>Notificações</h3>
+            <button id="notifications-clear">Limpar</button>
+        </div>
+        <div class="notifications-list" id="notifications-list"></div>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <main class="main-content">
+        <div class="container">
+
+            <!-- HERO CAROUSEL -->
+            <section class="hero-section" id="hero-section">
+                <div class="hero-carousel" id="hero-carousel"></div>
+                <div class="hero-dots" id="hero-dots"></div>
+            </section>
+
+            <!-- COTAÇÕES STRIP -->
+            <section class="cotacoes-strip" id="cotacoes-strip">
+                <div class="cotacoes-scroll" id="cotacoes-scroll"></div>
+            </section>
+
+            <!-- TRENDING TOPICS -->
+            <section class="trending-section" id="trending-section">
+                <div class="section-header">
+                    <h2><span class="material-icons">trending_up</span> Em Alta</h2>
+                </div>
+                <div class="trending-tags" id="trending-tags"></div>
+            </section>
+
+            <!-- CONTENT GRID -->
+            <div class="content-grid">
+
+                <!-- MAIN COLUMN -->
+                <div class="col-main">
+
+                    <!-- ÚLTIMAS NOTÍCIAS (TABS) -->
+                    <section class="ultimas-section" id="ultimas-section">
+                        <div class="section-header">
+                            <h2><span class="material-icons">fiber_new</span> Últimas Notícias</h2>
+                            <div class="tab-buttons" id="tab-buttons">
+                                <button class="tab-btn active" data-tab="recentes">Recentes</button>
+                                <button class="tab-btn" data-tab="mais-lidas">Mais Lidas</button>
+                            </div>
+                        </div>
+                        <div class="news-grid" id="news-grid"></div>
+                        <button class="btn-load-more" id="btn-load-more">
+                            <span class="material-icons">expand_more</span> Carregar Mais
+                        </button>
+                    </section>
+
+                    <!-- CATEGORY SECTIONS -->
+                    <section class="category-section" id="section-politica">
+                        <div class="section-header">
+                            <h2><span class="material-icons">account_balance</span> Política</h2>
+                            <a href="#" class="ver-mais" data-category="politica">Ver todas <span class="material-icons">arrow_forward</span></a>
+                        </div>
+                        <div class="category-grid" data-category="politica"></div>
+                    </section>
+
+                    <section class="category-section" id="section-economia">
+                        <div class="section-header">
+                            <h2><span class="material-icons">trending_up</span> Economia</h2>
+                            <a href="#" class="ver-mais" data-category="economia">Ver todas <span class="material-icons">arrow_forward</span></a>
+                        </div>
+                        <div class="category-grid" data-category="economia"></div>
+                    </section>
+
+                    <section class="category-section" id="section-cidade">
+                        <div class="section-header">
+                            <h2><span class="material-icons">location_city</span> Cidade</h2>
+                            <a href="#" class="ver-mais" data-category="cidade">Ver todas <span class="material-icons">arrow_forward</span></a>
+                        </div>
+                        <div class="category-grid" data-category="cidade"></div>
+                    </section>
+
+                    <section class="category-section" id="section-esportes">
+                        <div class="section-header">
+                            <h2><span class="material-icons">sports_soccer</span> Esportes</h2>
+                            <a href="#" class="ver-mais" data-category="esportes">Ver todas <span class="material-icons">arrow_forward</span></a>
+                        </div>
+                        <div class="category-grid" data-category="esportes"></div>
+                    </section>
+
+                    <section class="category-section" id="section-brasil">
+                        <div class="section-header">
+                            <h2><span class="material-icons">flag</span> Brasil</h2>
+                            <a href="#" class="ver-mais" data-category="brasil">Ver todas <span class="material-icons">arrow_forward</span></a>
+                        </div>
+                        <div class="category-grid" data-category="brasil"></div>
+                    </section>
+
+                    <section class="category-section" id="section-internacional">
+                        <div class="section-header">
+                            <h2><span class="material-icons">public</span> Mundo</h2>
+                            <a href="#" class="ver-mais" data-category="internacional">Ver todas <span class="material-icons">arrow_forward</span></a>
+                        </div>
+                        <div class="category-grid" data-category="internacional"></div>
+                    </section>
+
+                    <section class="category-section" id="section-eventos">
+                        <div class="section-header">
+                            <h2><span class="material-icons">event</span> Eventos</h2>
+                            <a href="#" class="ver-mais" data-category="eventos">Ver todas <span class="material-icons">arrow_forward</span></a>
+                        </div>
+                        <div class="category-grid" data-category="eventos"></div>
+                    </section>
+
+                    <!-- VIDEOS -->
+                    <section class="videos-section" id="videos-section">
+                        <div class="section-header">
+                            <h2><span class="material-icons">play_circle</span> Vídeos</h2>
+                        </div>
+                        <div class="videos-grid" id="videos-grid"></div>
+                    </section>
+
+                </div>
+
+                <!-- SIDEBAR -->
+                <aside class="col-sidebar">
+
+                    <!-- CLIMA -->
+                    <div class="sidebar-widget weather-widget" id="weather-widget">
+                        <div class="widget-header">
+                            <h3><span class="material-icons">wb_sunny</span> Clima</h3>
+                        </div>
+                        <div class="weather-content" id="weather-content"></div>
+                    </div>
+
+                    <!-- MAIS LIDAS -->
+                    <div class="sidebar-widget" id="mais-lidas-widget">
+                        <div class="widget-header">
+                            <h3><span class="material-icons">local_fire_department</span> Mais Lidas</h3>
+                        </div>
+                        <div class="mais-lidas-list" id="mais-lidas-list"></div>
+                    </div>
+
+                    <!-- ENQUETE -->
+                    <div class="sidebar-widget enquete-widget" id="enquete-widget">
+                        <div class="widget-header">
+                            <h3><span class="material-icons">poll</span> Enquete</h3>
+                        </div>
+                        <div class="enquete-content" id="enquete-content"></div>
+                    </div>
+
+                    <!-- NEWSLETTER -->
+                    <div class="sidebar-widget newsletter-widget">
+                        <div class="widget-header">
+                            <h3><span class="material-icons">email</span> Newsletter</h3>
+                        </div>
+                        <p>Receba as principais notícias de Cuiabá no seu e-mail.</p>
+                        <form class="newsletter-form" id="newsletter-form">
+                            <input type="email" placeholder="Seu melhor e-mail" required>
+                            <button type="submit">Inscrever</button>
+                        </form>
+                    </div>
+
+                </aside>
+            </div>
+        </div>
+    </main>
+
+    <!-- SHARE POPUP -->
+    <div class="share-popup" id="share-popup">
+        <div class="share-popup-inner">
+            <h3>Compartilhar</h3>
+            <div class="share-buttons">
+                <button class="share-btn whatsapp" data-platform="whatsapp">
+                    <span class="material-icons">chat</span> WhatsApp
+                </button>
+                <button class="share-btn twitter" data-platform="twitter">
+                    <span class="material-icons">tag</span> Twitter
+                </button>
+                <button class="share-btn facebook" data-platform="facebook">
+                    <span class="material-icons">thumb_up</span> Facebook
+                </button>
+                <button class="share-btn copy" data-platform="copy">
+                    <span class="material-icons">content_copy</span> Copiar Link
+                </button>
+            </div>
+            <button class="share-close" id="share-close">
+                <span class="material-icons">close</span>
+            </button>
+        </div>
+    </div>
+
+    <!-- VIDEO MODAL -->
+    <div class="video-modal" id="video-modal">
+        <div class="video-modal-inner">
+            <button class="video-modal-close" id="video-modal-close">
+                <span class="material-icons">close</span>
+            </button>
+            <div class="video-modal-player" id="video-modal-player"></div>
+            <h3 class="video-modal-title" id="video-modal-title"></h3>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <div class="footer-logo">CUIABÁ<span>NEWS</span></div>
+                    <p>Portal de notícias de Cuiabá e Mato Grosso. Informação com credibilidade, atualizada por inteligência artificial.</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Categorias</h4>
+                    <ul>
+                        <li><a href="#" data-category="politica">Política</a></li>
+                        <li><a href="#" data-category="economia">Economia</a></li>
+                        <li><a href="#" data-category="cidade">Cidade</a></li>
+                        <li><a href="#" data-category="esportes">Esportes</a></li>
+                        <li><a href="#" data-category="brasil">Brasil</a></li>
+                        <li><a href="#" data-category="internacional">Mundo</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Sobre</h4>
+                    <ul>
+                        <li><a href="#">Quem Somos</a></li>
+                        <li><a href="#">Termos de Uso</a></li>
+                        <li><a href="#">Política de Privacidade</a></li>
+                        <li><a href="#">Contato</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 CUIABÁ NEWS. Todos os direitos reservados. Conteúdo gerado com auxílio de IA.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- TOAST -->
+    <div class="toast-container" id="toast-container"></div>
+
+    <script src="js/news-data.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,10 @@
+backend/.env
+backend/cache/
+backend/logs/
+backend/bot.lock
+backend/healthcheck.json
+backend/__pycache__/
+*.pyc
+node_modules/
+.vercel/
+js/news-data.js.backup
