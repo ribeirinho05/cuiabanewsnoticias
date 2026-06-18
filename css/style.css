@@ -265,7 +265,7 @@ ul { list-style: none; }
 .notification-item .time { font-size: 0.7rem; color: var(--text-secondary); margin-top: 4px; }
 
 /* === HERO CAROUSEL === */
-.hero-section { margin: 24px 0; }
+.hero-section { margin: 24px 0; position: relative; }
 .hero-carousel { position: relative; border-radius: var(--radius); overflow: hidden; }
 .hero-slide {
     display: none; position: relative; aspect-ratio: 16/7;
@@ -291,6 +291,17 @@ ul { list-style: none; }
     font-weight: 800; line-height: 1.2; margin-bottom: 8px;
 }
 .hero-slide-meta { font-size: 0.8rem; opacity: 0.6; }
+.hero-arrow {
+    position: absolute; top: 50%; transform: translateY(-50%);
+    background: rgba(0,0,0,0.5); color: white; border: none; border-radius: 50%;
+    width: 44px; height: 44px; display: flex; align-items: center; justify-content: center;
+    cursor: pointer; z-index: 5; transition: var(--transition);
+}
+.hero-arrow:hover { background: rgba(0,0,0,0.8); }
+.hero-arrow-left { left: 12px; }
+.hero-arrow-right { right: 12px; }
+.hero-arrow .material-icons { font-size: 28px; }
+@media (max-width: 768px) { .hero-arrow { width: 36px; height: 36px; } .hero-arrow .material-icons { font-size: 22px; } }
 .hero-dots {
     display: flex; justify-content: center; gap: 8px; margin-top: 16px;
 }

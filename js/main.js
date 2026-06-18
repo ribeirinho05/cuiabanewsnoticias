@@ -132,6 +132,15 @@
             });
         });
 
+        var prevBtn = document.getElementById('hero-prev');
+        var nextBtn = document.getElementById('hero-next');
+        if (prevBtn) prevBtn.addEventListener('click', function() {
+            goTo((currentSlide - 1 + slides.length) % slides.length);
+        });
+        if (nextBtn) nextBtn.addEventListener('click', function() {
+            goTo((currentSlide + 1) % slides.length);
+        });
+
         setInterval(function() {
             goTo((currentSlide + 1) % slides.length);
         }, 6000);
