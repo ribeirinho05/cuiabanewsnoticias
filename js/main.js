@@ -252,12 +252,14 @@
     function initCategorySections() {
         var categories = ['politica', 'economia', 'cidade', 'esportes', 'brasil', 'internacional', 'eventos'];
         var cats = typeof CATEGORIAS !== 'undefined' ? CATEGORIAS : {};
+        var idsUsados = {};
+        allNews.slice(0, itemsPerPage).forEach(function(n) { idsUsados[n.id] = true; });
 
         categories.forEach(function(cat) {
             var grid = document.querySelector('.category-grid[data-category="' + cat + '"]');
             if (!grid) return;
 
-            var items = allNews.filter(function(n) { return n.categoria === cat; }).slice(0, 3);
+            var items = allNews.filter(function(n) { return n.categoria === cat && !idsUsados[n.id]; }).slice(0, 4);
             if (!items.length) {
                 var section = document.getElementById('section-' + cat);
                 if (section) section.style.display = 'none';
@@ -387,7 +389,7 @@
         var el = document.getElementById('side-news-items');
         if (!el || !allNews.length) return;
         var cats = typeof CATEGORIAS !== 'undefined' ? CATEGORIAS : {};
-        var sideItems = allNews.slice(5, 20);
+        var sideItems = allNews.slice(itemsPerPage, itemsPerPage + 15);
         el.innerHTML = sideItems.map(function(n) {
             var ci = cats[n.categoria] || {nome: n.categoria};
             return '<div class="side-news-item" data-id="' + n.id + '">' +
