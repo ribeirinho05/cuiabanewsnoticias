@@ -356,6 +356,7 @@ CIDADE = 'Cuiabá'
 ESTADO = 'MT'
 LATITUDE = -15.6014
 LONGITUDE = -56.0979
+CIDADE_COORDS = {'lat': LATITUDE, 'lon': LONGITUDE}
 
 # === CAMINHOS ===
 CAMINHO_JS = os.path.join(os.path.dirname(__file__), '..', 'js', 'news-data.js')
