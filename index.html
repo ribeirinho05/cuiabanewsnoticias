@@ -173,71 +173,6 @@
                         </button>
                     </section>
 
-                    <!-- CATEGORY SECTIONS -->
-                    <section class="category-section" id="section-politica">
-                        <div class="section-header">
-                            <h2><span class="material-icons">account_balance</span> Política</h2>
-                            <a href="#" class="ver-mais" data-category="politica">Ver todas <span class="material-icons">arrow_forward</span></a>
-                        </div>
-                        <div class="category-grid" data-category="politica"></div>
-                    </section>
-
-                    <section class="category-section" id="section-economia">
-                        <div class="section-header">
-                            <h2><span class="material-icons">trending_up</span> Economia</h2>
-                            <a href="#" class="ver-mais" data-category="economia">Ver todas <span class="material-icons">arrow_forward</span></a>
-                        </div>
-                        <div class="category-grid" data-category="economia"></div>
-                    </section>
-
-                    <section class="category-section" id="section-cidade">
-                        <div class="section-header">
-                            <h2><span class="material-icons">location_city</span> Cidade</h2>
-                            <a href="#" class="ver-mais" data-category="cidade">Ver todas <span class="material-icons">arrow_forward</span></a>
-                        </div>
-                        <div class="category-grid" data-category="cidade"></div>
-                    </section>
-
-                    <section class="category-section" id="section-esportes">
-                        <div class="section-header">
-                            <h2><span class="material-icons">sports_soccer</span> Esportes</h2>
-                            <a href="#" class="ver-mais" data-category="esportes">Ver todas <span class="material-icons">arrow_forward</span></a>
-                        </div>
-                        <div class="category-grid" data-category="esportes"></div>
-                    </section>
-
-                    <section class="category-section" id="section-brasil">
-                        <div class="section-header">
-                            <h2><span class="material-icons">flag</span> Brasil</h2>
-                            <a href="#" class="ver-mais" data-category="brasil">Ver todas <span class="material-icons">arrow_forward</span></a>
-                        </div>
-                        <div class="category-grid" data-category="brasil"></div>
-                    </section>
-
-                    <section class="category-section" id="section-internacional">
-                        <div class="section-header">
-                            <h2><span class="material-icons">public</span> Mundo</h2>
-                            <a href="#" class="ver-mais" data-category="internacional">Ver todas <span class="material-icons">arrow_forward</span></a>
-                        </div>
-                        <div class="category-grid" data-category="internacional"></div>
-                    </section>
-
-                    <section class="category-section" id="section-eventos">
-                        <div class="section-header">
-                            <h2><span class="material-icons">event</span> Eventos</h2>
-                            <a href="#" class="ver-mais" data-category="eventos">Ver todas <span class="material-icons">arrow_forward</span></a>
-                        </div>
-                        <div class="category-grid" data-category="eventos"></div>
-                    </section>
-
-                    <!-- VIDEOS -->
-                    <section class="videos-section" id="videos-section">
-                        <div class="section-header">
-                            <h2><span class="material-icons">play_circle</span> Vídeos</h2>
-                        </div>
-                        <div class="videos-grid" id="videos-grid"></div>
-                    </section>
-
                 </div>
 
                 <!-- SIDEBAR -->
@@ -259,29 +194,84 @@
                         <div class="mais-lidas-list" id="mais-lidas-list"></div>
                     </div>
 
-                    <!-- ENQUETE -->
-                    <div class="sidebar-widget enquete-widget" id="enquete-widget">
+                    <!-- MAIS NOTÍCIAS SIDEBAR -->
+                    <div class="sidebar-widget" id="side-news-widget">
                         <div class="widget-header">
-                            <h3><span class="material-icons">poll</span> Enquete</h3>
+                            <h3><span class="material-icons">article</span> Mais Notícias</h3>
                         </div>
-                        <div class="enquete-content" id="enquete-content"></div>
-                    </div>
-
-                    <!-- NEWSLETTER -->
-                    <div class="sidebar-widget newsletter-widget">
-                        <div class="widget-header">
-                            <h3><span class="material-icons">email</span> Newsletter</h3>
-                        </div>
-                        <p>Receba as principais notícias de Cuiabá no seu e-mail.</p>
-                        <form class="newsletter-form" id="newsletter-form">
-                            <input type="email" placeholder="Seu melhor e-mail" required>
-                            <button type="submit">Inscrever</button>
-                        </form>
+                        <div class="side-news-list" id="side-news-items"></div>
                     </div>
 
                 </aside>
             </div>
         </div>
+
+        <!-- FULL-WIDTH SECTIONS (abaixo do grid) -->
+        <div class="full-sections">
+            <section class="category-section" id="section-politica">
+                <div class="section-header">
+                    <h2><span class="material-icons">account_balance</span> Política</h2>
+                    <a href="#" class="ver-mais" data-category="politica">Ver todas <span class="material-icons">arrow_forward</span></a>
+                </div>
+                <div class="category-grid" data-category="politica"></div>
+            </section>
+
+            <section class="category-section" id="section-economia">
+                <div class="section-header">
+                    <h2><span class="material-icons">trending_up</span> Economia</h2>
+                    <a href="#" class="ver-mais" data-category="economia">Ver todas <span class="material-icons">arrow_forward</span></a>
+                </div>
+                <div class="category-grid" data-category="economia"></div>
+            </section>
+
+            <section class="category-section" id="section-cidade">
+                <div class="section-header">
+                    <h2><span class="material-icons">location_city</span> Cidade</h2>
+                    <a href="#" class="ver-mais" data-category="cidade">Ver todas <span class="material-icons">arrow_forward</span></a>
+                </div>
+                <div class="category-grid" data-category="cidade"></div>
+            </section>
+
+            <section class="category-section" id="section-esportes">
+                <div class="section-header">
+                    <h2><span class="material-icons">sports_soccer</span> Esportes</h2>
+                    <a href="#" class="ver-mais" data-category="esportes">Ver todas <span class="material-icons">arrow_forward</span></a>
+                </div>
+                <div class="category-grid" data-category="esportes"></div>
+            </section>
+
+            <section class="category-section" id="section-brasil">
+                <div class="section-header">
+                    <h2><span class="material-icons">flag</span> Brasil</h2>
+                    <a href="#" class="ver-mais" data-category="brasil">Ver todas <span class="material-icons">arrow_forward</span></a>
+                </div>
+                <div class="category-grid" data-category="brasil"></div>
+            </section>
+
+            <section class="category-section" id="section-internacional">
+                <div class="section-header">
+                    <h2><span class="material-icons">public</span> Mundo</h2>
+                    <a href="#" class="ver-mais" data-category="internacional">Ver todas <span class="material-icons">arrow_forward</span></a>
+                </div>
+                <div class="category-grid" data-category="internacional"></div>
+            </section>
+
+            <section class="category-section" id="section-eventos">
+                <div class="section-header">
+                    <h2><span class="material-icons">event</span> Eventos</h2>
+                    <a href="#" class="ver-mais" data-category="eventos">Ver todas <span class="material-icons">arrow_forward</span></a>
+                </div>
+                <div class="category-grid" data-category="eventos"></div>
+            </section>
+
+            <section class="videos-section" id="videos-section">
+                <div class="section-header">
+                    <h2><span class="material-icons">play_circle</span> Vídeos</h2>
+                </div>
+                <div class="videos-grid" id="videos-grid"></div>
+            </section>
+        </div>
+
     </main>
 
     <!-- SHARE POPUP -->

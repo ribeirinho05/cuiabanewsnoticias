@@ -35,14 +35,13 @@
         initVideos();
         initWeather();
         initMaisLidas();
-        initEnquete();
+        initSideNews();
         initSearch();
         initNotifications();
         initNavigation();
         initSharePopup();
         initLoadMore();
         initTabs();
-        initNewsletter();
         initScrollReveal();
         initReadingProgress();
     });
@@ -383,36 +382,25 @@
         });
     }
 
-    // === ENQUETE ===
-    function initEnquete() {
-        var content = document.getElementById('enquete-content');
-        if (!content) return;
-        var eq = typeof enquete !== 'undefined' ? enquete : null;
-        if (!eq) return;
-
-        var totalVotos = eq.opcoes.reduce(function(sum, o) { return sum + o.votos; }, 0);
-        var voted = localStorage.getItem('cuiabanews-voted');
-
-        content.innerHTML = '<h4>' + escapeHtml(eq.pergunta) + '</h4>' +
-            eq.opcoes.map(function(o, i) {
-                var pct = totalVotos > 0 ? Math.round((o.votos / totalVotos) * 100) : 0;
-                return '<div class="enquete-option' + (voted ? ' voted' : '') + '" data-index="' + i + '">' +
-                    '<div class="enquete-bar" style="width: ' + (voted ? pct : 0) + '%"></div>' +
-                    '<div class="enquete-text"><span>' + escapeHtml(o.texto) + '</span>' +
-                    (voted ? '<span class="enquete-percent">' + pct + '%</span>' : '') +
-                    '</div></div>';
-            }).join('') +
-            '<div class="enquete-total">' + totalVotos.toLocaleString('pt-BR') + ' votos</div>';
-
-        if (!voted) {
-            content.querySelectorAll('.enquete-option').forEach(function(opt) {
-                opt.addEventListener('click', function() {
-                    localStorage.setItem('cuiabanews-voted', 'true');
-                    initEnquete();
-                    showToast('Voto registrado!');
-                });
-            });
-        }
+    // === SIDE NEWS ===
+    function initSideNews() {
+        var el = document.getElementById('side-news-items');
+        if (!el || !allNews.length) return;
+        var cats = typeof CATEGORIAS !== 'undefined' ? CATEGORIAS : {};
+        var sideItems = allNews.slice(5, 20);
+        el.innerHTML = sideItems.map(function(n) {
+            var ci = cats[n.categoria] || {nome: n.categoria};
+            return '<div class="side-news-item" data-id="' + n.id + '">' +
+                '<div class="side-news-thumb"><img src="' + n.imagem + '" alt="" loading="lazy"></div>' +
+                '<div class="side-news-info">' +
+                '<div class="side-news-cat">' + escapeHtml(ci.nome || n.categoria) + '</div>' +
+                '<div class="side-news-title">' + escapeHtml(n.titulo) + '</div>' +
+                '<div class="side-news-meta">' + escapeHtml(n.autor) + ' &bull; ' + n.tempo + '</div>' +
+                '</div></div>';
+        }).join('');
+        el.querySelectorAll('.side-news-item').forEach(function(item) {
+            item.addEventListener('click', function() { openDetail(allNews.find(function(x){return x.id==this.getAttribute('data-id')}.bind(this))); }.bind(item));
+        });
     }
 
     // === SEARCH ===
@@ -609,17 +597,6 @@
         });
     }
 
-    // === NEWSLETTER ===
-    function initNewsletter() {
-        var form = document.getElementById('newsletter-form');
-        if (form) {
-            form.addEventListener('submit', function(e) {
-                e.preventDefault();
-                showToast('Inscrição realizada com sucesso!');
-                form.reset();
-            });
-        }
-    }
 
     // === SCROLL REVEAL ===
     function initScrollReveal() {
