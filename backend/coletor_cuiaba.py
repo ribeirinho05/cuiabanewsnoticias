@@ -121,7 +121,7 @@ def _extrair_noticia_generica(url, fonte):
             'data': data or datetime.now().isoformat(),
             'sem_data_real': data is None,
             'fonte': fonte['nome'],
-            'prioridade': fonte['prioridade']
+            'prioridade': fonte.get('prioridade', 50)
         }
 
     except Exception as e:

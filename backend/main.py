@@ -27,7 +27,7 @@ def _git_push_automatico():
         repo_dir = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), '..'))
         agora = datetime.now().strftime('%d/%m/%Y %H:%M')
 
-        subprocess.run(['git', 'add', 'js/news-data.js', 'backend/healthcheck.json'], cwd=repo_dir, check=True, capture_output=True)
+        subprocess.run(['git', 'add', 'js/news-data.js'], cwd=repo_dir, check=True, capture_output=True)
         subprocess.run(
             ['git', 'commit', '-m', f'Atualização automática CUIABÁ NEWS - {agora}'],
             cwd=repo_dir, check=True, capture_output=True
