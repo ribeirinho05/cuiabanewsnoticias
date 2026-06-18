@@ -8,10 +8,8 @@
 
     // === LOADING SCREEN ===
     window.addEventListener('load', function() {
-        setTimeout(function() {
-            var loading = document.getElementById('loading-screen');
-            if (loading) loading.classList.add('hidden');
-        }, 1600);
+        var loading = document.getElementById('loading-screen');
+        if (loading) loading.classList.add('hidden');
     });
 
     // === GLOBALS ===
@@ -106,6 +104,8 @@
                     '<h2 class="hero-slide-title">' + escapeHtml(n.titulo) + '</h2>' +
                     '<span class="hero-slide-meta">' + escapeHtml(n.autor) + ' &bull; ' + n.tempo + '</span>' +
                 '</div>';
+            slide.style.cursor = 'pointer';
+            slide.addEventListener('click', function() { window.location.href = 'noticia.html?id=' + n.id; });
             container.appendChild(slide);
 
             var dot = document.createElement('span');
@@ -625,33 +625,6 @@
         });
     }
 
-    // === NEWS DETAIL (simple modal/page) ===
-    function window.location.href = 'noticia.html?id=' + n.id {
-        var cats = typeof CATEGORIAS !== 'undefined' ? CATEGORIAS : {};
-        var catInfo = cats[n.categoria] || {nome: n.categoria};
-
-        var overlay = document.createElement('div');
-        overlay.style.cssText = 'position:fixed;inset:0;z-index:4000;background:rgba(0,0,0,0.7);display:flex;align-items:center;justify-content:center;padding:20px;';
-        overlay.innerHTML =
-            '<div style="background:var(--bg-card);border-radius:var(--radius);max-width:700px;width:100%;max-height:90vh;overflow-y:auto;position:relative;">' +
-                '<button onclick="this.closest(\'div[style]\').remove()" style="position:absolute;top:12px;right:12px;z-index:1;background:rgba(0,0,0,0.5);color:white;width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;border:none;">' +
-                    '<span class="material-icons">close</span>' +
-                '</button>' +
-                '<img src="' + n.imagem + '" style="width:100%;aspect-ratio:16/9;object-fit:cover;border-radius:var(--radius) var(--radius) 0 0;" alt="">' +
-                '<div style="padding:28px;">' +
-                    '<span style="display:inline-block;background:var(--gold);color:var(--navy);padding:4px 12px;border-radius:6px;font-size:0.7rem;font-weight:800;text-transform:uppercase;margin-bottom:12px;">' + escapeHtml(catInfo.nome || n.categoria) + '</span>' +
-                    '<h1 style="font-family:var(--font-display);font-size:1.6rem;font-weight:800;line-height:1.3;margin-bottom:12px;">' + escapeHtml(n.titulo) + '</h1>' +
-                    '<p style="font-size:0.8rem;color:var(--text-secondary);margin-bottom:20px;">' + escapeHtml(n.autor) + ' &bull; ' + n.tempo + '</p>' +
-                    '<p style="font-size:1rem;line-height:1.8;color:var(--text);">' + escapeHtml(n.resumo || '') + '</p>' +
-                '</div>' +
-            '</div>';
-
-        overlay.addEventListener('click', function(e) {
-            if (e.target === overlay) overlay.remove();
-        });
-
-        document.body.appendChild(overlay);
-    }
 
     // === TOAST ===
     function showToast(msg) {
