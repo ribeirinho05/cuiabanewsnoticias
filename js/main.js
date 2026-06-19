@@ -237,7 +237,7 @@
 
         var repCard = currentCategory === 'todas' ? '<article class="news-card news-card-rep reveal" onclick="window.location.href=\'reportagem-quantagropharma.html\'">' +
             '<div class="news-card-image">' +
-                '<img src="img/computador-quantico.webp" alt="QuantAgroPharma" loading="lazy">' +
+                '<img src="img/rafael-reportagem.png" alt="Rafael Erasmo de Oliveira Assis" loading="lazy">' +
                 '<span class="news-card-category" style="background:linear-gradient(135deg,#c8a415,#a88b0f)">Reportagem Especial</span>' +
             '</div>' +
             '<div class="news-card-body">' +
