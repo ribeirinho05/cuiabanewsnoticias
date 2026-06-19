@@ -715,7 +715,7 @@ ul { list-style: none; }
 /* === RESPONSIVE === */
 @media (max-width: 1024px) {
     .content-grid { grid-template-columns: 1fr; }
-    .col-sidebar { order: -1; display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .col-sidebar { position: static; display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
     .category-grid { grid-template-columns: repeat(2, 1fr); }
 }
 
