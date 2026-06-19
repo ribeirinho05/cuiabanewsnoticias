@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://cuiabanewsnoticias.vercel.app/sitemap.xml
