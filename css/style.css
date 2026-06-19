@@ -715,7 +715,7 @@ ul { list-style: none; }
 /* === RESPONSIVE === */
 @media (max-width: 1024px) {
     .content-grid { grid-template-columns: 1fr; }
-    .col-sidebar { position: static; display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .col-sidebar { position: static; align-self: auto; overflow: visible; display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
     .category-grid { grid-template-columns: repeat(2, 1fr); }
 }
 
@@ -726,7 +726,7 @@ ul { list-style: none; }
     .news-grid { grid-template-columns: 1fr; }
     .category-grid { grid-template-columns: 1fr; }
     .videos-grid { grid-template-columns: 1fr; }
-    .col-sidebar { grid-template-columns: 1fr; }
+    .col-sidebar { position: static; align-self: auto; overflow: visible; grid-template-columns: 1fr; z-index: auto; }
     .footer-grid { grid-template-columns: 1fr; gap: 24px; }
     .logo-cuiaba, .logo-news { font-size: 2rem; }
     .section-header h2 { font-size: 1.15rem; }
