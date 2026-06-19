@@ -18,24 +18,29 @@
         .rep-hero {
             position: relative;
             width: 100%;
-            min-height: 65vh;
-            background: linear-gradient(135deg, var(--navy) 0%, var(--navy-dark) 60%, #0a0f1a 100%);
+            height: 520px;
             display: flex;
-            align-items: flex-end;
             overflow: hidden;
         }
-        .rep-hero::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: url('https://images.pexels.com/photos/373543/pexels-photo-373543.jpeg?auto=compress&cs=tinysrgb&w=1920') center/cover no-repeat;
-            opacity: 0.18;
+        .rep-hero-left {
+            width: 50%; height: 100%; overflow: hidden;
+        }
+        .rep-hero-left img {
+            width: 100%; height: 100%; object-fit: cover; filter: brightness(0.5);
+        }
+        .rep-hero-right {
+            width: 50%; height: 100%; overflow: hidden;
+        }
+        .rep-hero-right img {
+            width: 100%; height: 100%; object-fit: cover; object-position: top center;
         }
         .rep-hero-content {
-            position: relative;
+            position: absolute;
+            bottom: 0; left: 0; width: 50%; height: 100%;
             z-index: 2;
-            max-width: 900px;
-            padding: 60px 40px 50px;
+            display: flex; flex-direction: column; justify-content: flex-end;
+            padding: 40px;
+            background: linear-gradient(transparent 30%, rgba(10,20,40,0.9));
         }
         .rep-badge {
             display: inline-flex;
@@ -326,10 +331,19 @@
         .rep-back:hover { color: var(--orange); }
 
         @media (max-width: 768px) {
-            .rep-hero { min-height: 50vh; }
-            .rep-hero h1 { font-size: 1.7rem; }
-            .rep-hero-content { padding: 40px 20px 36px; }
-            .rep-hero-sub { font-size: 1rem; }
+            .rep-hero { height: 380px; }
+            .rep-hero-left { width: 40%; }
+            .rep-hero-right { width: 60%; }
+            .rep-hero h1 { font-size: 1.2rem; }
+            .rep-hero-content { width: 100%; padding: 20px 16px; }
+            .rep-hero-sub { font-size: 0.8rem; }
+        }
+        @media (max-width: 480px) {
+            .rep-hero { height: 320px; }
+            .rep-hero-left { width: 35%; }
+            .rep-hero-right { width: 65%; }
+            .rep-hero h1 { font-size: 1rem; }
+            .rep-hero-sub { display: none; }
             .rep-quote { padding: 28px 24px; }
             .rep-quote p { font-size: 1.1rem; }
             .rep-section-title { font-size: 1.3rem; }
@@ -364,6 +378,12 @@
 
     <!-- HERO -->
     <section class="rep-hero">
+        <div class="rep-hero-left">
+            <img src="img/computador-quantico.webp" alt="Computador Quântico">
+        </div>
+        <div class="rep-hero-right">
+            <img src="img/rafael-reportagem.png" alt="Rafael Erasmo de Oliveira Assis">
+        </div>
         <div class="rep-hero-content">
             <div class="rep-badge">
                 <span class="material-icons">science</span>

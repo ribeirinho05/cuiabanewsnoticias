@@ -93,10 +93,29 @@
 
         var cats = typeof CATEGORIAS !== 'undefined' ? CATEGORIAS : {};
 
+        // Slide fixo da reportagem especial
+        var repSlide = document.createElement('div');
+        repSlide.className = 'hero-slide active hero-slide-rep';
+        repSlide.innerHTML = '<div class="hero-rep-split">' +
+            '<div class="hero-rep-left"><img src="img/computador-quantico.webp" alt="Computador Quântico"></div>' +
+            '<div class="hero-rep-right"><img src="img/rafael-reportagem.png" alt="Rafael Erasmo de Oliveira Assis"></div>' +
+            '<div class="hero-rep-overlay">' +
+            '<span class="hero-slide-category" style="background:linear-gradient(135deg,#c8a415,#a88b0f)">Reportagem Especial</span>' +
+            '<h2 class="hero-slide-title">Empresário radicado em Sinop desenvolve tecnologia quântica inédita e projeta Mato Grosso no cenário científico</h2>' +
+            '<span class="hero-slide-meta">Redação CuiabáNews &bull; Reportagem</span>' +
+            '</div></div>';
+        repSlide.style.cursor = 'pointer';
+        repSlide.addEventListener('click', function() { window.location.href = 'reportagem-quantagropharma.html'; });
+        container.appendChild(repSlide);
+        var repDot = document.createElement('span');
+        repDot.className = 'hero-dot active';
+        repDot.setAttribute('data-index', 0);
+        dotsContainer.appendChild(repDot);
+
         destaques.forEach(function(n, i) {
             var catInfo = cats[n.categoria] || {nome: n.categoria};
             var slide = document.createElement('div');
-            slide.className = 'hero-slide' + (i === 0 ? ' active' : '');
+            slide.className = 'hero-slide';
             slide.innerHTML =
                 '<img src="' + n.imagem + '" alt="' + escapeHtml(n.titulo) + '" loading="lazy">' +
                 '<div class="hero-slide-overlay">' +
@@ -109,8 +128,8 @@
             container.appendChild(slide);
 
             var dot = document.createElement('span');
-            dot.className = 'hero-dot' + (i === 0 ? ' active' : '');
-            dot.setAttribute('data-index', i);
+            dot.className = 'hero-dot';
+            dot.setAttribute('data-index', i + 1);
             dotsContainer.appendChild(dot);
         });
 
@@ -141,9 +160,11 @@
             goTo((currentSlide + 1) % slides.length);
         });
 
-        setInterval(function() {
-            goTo((currentSlide + 1) % slides.length);
-        }, 6000);
+        function autoNext() {
+            var delay = currentSlide === 0 ? 10000 : 6000;
+            setTimeout(function() { goTo((currentSlide + 1) % slides.length); autoNext(); }, delay);
+        }
+        autoNext();
     }
 
     // === TICKER ===
@@ -214,7 +235,17 @@
         var toShow = filtered.slice(0, currentPage * itemsPerPage);
         var cats = typeof CATEGORIAS !== 'undefined' ? CATEGORIAS : {};
 
-        grid.innerHTML = toShow.map(function(n, i) {
+        var repCard = currentCategory === 'todas' ? '<article class="news-card news-card-rep reveal" onclick="window.location.href=\'reportagem-quantagropharma.html\'">' +
+            '<div class="news-card-image">' +
+                '<img src="img/computador-quantico.webp" alt="QuantAgroPharma" loading="lazy">' +
+                '<span class="news-card-category" style="background:linear-gradient(135deg,#c8a415,#a88b0f)">Reportagem Especial</span>' +
+            '</div>' +
+            '<div class="news-card-body">' +
+                '<h3 class="news-card-title">Empresário radicado em Sinop desenvolve tecnologia quântica inédita e projeta MT no cenário científico</h3>' +
+                '<p class="news-card-excerpt">Rafael Erasmo de Oliveira Assis, 29 anos, criou método proprietário de simulação molecular quântica com aplicações no agronegócio e na indústria farmacêutica.</p>' +
+                '<div class="news-card-meta"><span class="author">Redação CuiabáNews</span><span>Reportagem</span></div>' +
+            '</div></article>' : '';
+        grid.innerHTML = repCard + toShow.map(function(n, i) {
             var catInfo = cats[n.categoria] || {nome: n.categoria};
             return '<article class="news-card reveal" data-id="' + n.id + '">' +
                 '<div class="news-card-image">' +
@@ -249,6 +280,7 @@
         });
 
         container.querySelectorAll('.news-card').forEach(function(card) {
+            if (card.classList.contains('news-card-rep')) return;
             card.addEventListener('click', function() {
                 var id = this.getAttribute('data-id');
                 var n = allNews.find(function(item) { return item.id == id; });
